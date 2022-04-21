@@ -5,10 +5,7 @@
  */
 var rotateString = function(s, goal) {
     var old = s + s;
-    if(s === goal || (s.length === goal.length && old.indexOf(goal) !== -1)){
-        return true;
-    }else{
-        return false;
-    }
+    return  (s === goal || (s.length === goal.length && old.indexOf(goal) !== -1))?true:false;
+  
     
 };
