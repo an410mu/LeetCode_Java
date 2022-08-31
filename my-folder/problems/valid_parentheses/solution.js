@@ -8,23 +8,18 @@ var isValid = function(s) {
     //iterate the string, and acummulate a total value 
     //check total value if 0 => true, else false 
     //check special case, total = 0 , but not in order 
-    let total = 0;
-    let inOrder = 0;
-    let obj = {
-        "(" : ")",
-        "[" : "]",
-        "{" :"}",
-
+    let bracket = {
+        '(' : ')',
+        '[' : ']',
+        '{' : '}'
     }
-   
     let heap = [];
-    
-    for (let char of s) {
-        if (obj[char]) {
-            heap.push(obj[char])
+    for (let i = 0; i < s.length; i++) {
+        if (bracket[s[i]]) {
+            heap.push(bracket[s[i]])
         } else {
-            if (char !== heap.pop()) return false;
+            if (s[i] !== heap.pop()) {return false;}
         }
     }
-    return !heap.length
+    return !heap.length; 
 };
