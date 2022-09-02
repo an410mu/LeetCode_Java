@@ -4,30 +4,22 @@
  * @return {boolean}
  */
 var isAnagram = function(s, t) {
-    let obj1 = {};
-    let obj2 = {};
-    if (s.length !== t.length) return false;
-    s.split('').forEach(function(ele) {
-        if (obj1[ele] === undefined) {
-            obj1[ele] = 1;
-        } else {
-            obj1[ele] += 1;
-        }
-    });
 
-    t.split('').forEach(function(ele) {
-        if (obj2[ele] === undefined) {
-            obj2[ele] = 1;
-        } else {
-            obj2[ele] += 1;
-        }
-    });
-    //console.log([obj1,obj2]);
-    for (let key in obj1) {
-        if (obj1[key] !== obj2[key]) {
+   let objs = {}
+   let objt = {}
+    if (s.length !== t.length) {
+        return false;
+    }   
+   for (let char of s) {
+       objs[char] = objs[char] === undefined ? 1 : objs[char]+=1
+   }
+    for (let char of t) {
+        objt[char] = objt[char] === undefined ? 1 : objt[char]+=1
+    }
+    for (let key in objs) {
+        if (objs[key] !== objt[key]) {
             return false;
         }
     }
-
     return true;
 };
