@@ -13,19 +13,16 @@ var reverseList = function(head) {
     if (!head) {
         return null
     }
-    let stack = []
-    let cur = head
-    while(cur) {
-        stack.push(cur.val)
-        cur = cur.next
-    }
     
-    let output = new ListNode();
-    let tail = output
-    while(stack.length > 0) {
-        let node = new ListNode(stack.pop())
-        tail.next = node
-        tail = tail.next
+    let todo = head.next
+    let newList = head
+    newList.next = null  //1
+    while(todo) {
+        let temp = todo //2
+        todo = todo.next //3
+        temp.next = newList //2-1-null
+        newList = temp
     }
-    return output.next
+    return newList
+    
 };
