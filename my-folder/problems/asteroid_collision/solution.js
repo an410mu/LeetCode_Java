@@ -10,24 +10,24 @@ var asteroidCollision = function(asteroids) {
     //if equal to top of stack, pop
     //if greater than top, loop till less than top of stack 
     let stack = []
-    for (let i = 0; i < asteroids.length; i++) {
-        if (stack.length === 0 || asteroids[i] > 0) {
+    for (let i =0; i < asteroids.length; i++) {
+        if (asteroids[i] > 0 || stack.length === 0) {
             stack.push(asteroids[i])
         } else {
             while (true) {
-                if (stack[stack.length -1] < 0) {
+                if (stack[stack.length - 1] < 0) {
                     stack.push(asteroids[i])
-                    break;
-                } else if (-asteroids[i] < stack[stack.length - 1]) {
-                    break;
-                } else if (-asteroids[i] === stack[stack.length -1]) {
+                    break
+                } else if (asteroids[i] * -1 < stack[stack.length - 1]) {
+                    break
+                } else if (asteroids[i] * -1 === stack[stack.length - 1]) {
                     stack.pop()
-                    break;
+                    break
                 } else {
                     stack.pop()
                     if (stack.length === 0) {
-                        stack.push(asteroids[i])
-                        break;
+                         stack.push(asteroids[i])
+                        break
                     }
                 }
             }
