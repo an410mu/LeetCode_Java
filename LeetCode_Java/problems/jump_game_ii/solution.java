@@ -6,7 +6,7 @@ class Solution {
         while (right < nums.length - 1) {
             int maxJump = 0;
             for (int i = left; i < right + 1; i++) {
-                maxJump = Math.max(maxJump, i + nums[i]);
+                maxJump = Math.max(maxJump, nums[i]+i);
             }
             left = right + 1;
             right = maxJump;
@@ -14,6 +14,4 @@ class Solution {
         }
         return count;
     }
-
 }
-
